@@ -12,6 +12,8 @@ errors = []
 failed = []
 
 for channel_id, channel_title in [("UCIYNYv9ddZBg42gvyp8L2Iw", "팀브라더스"), ("UCIB_oNqi62rKnPFb3Toaozw", "코리안브로스"), ("UC270ueFEsQ21S26TYI_9yVA", "야신야덕")]:
+    print(channel_title)
+    
     videos = yt.search(channel_id=channel_id, max_results=999999)
 
     for video in videos:
@@ -26,8 +28,6 @@ for channel_id, channel_title in [("UCIYNYv9ddZBg42gvyp8L2Iw", "팀브라더스"
             })
         except:
             errors.append(video)
-        break
-    break
 
     ret.append({"channel_title": channel_title, "videos": videos})
 
