@@ -1,22 +1,23 @@
 import json
 
-from youtube_api import YouTubeDataAPI
 from ycd import downloader, simple_downloader
 from ycd.simple_downloader import search_comments, get_comments_from_data
 
+from logger import logger
+from videos import get_videos_from_channel
 
-api_key = "AIzaSyCT1xN2Lc6Cni3jtyzVdPEQqr6mw001BlM"
-yt = YouTubeDataAPI(api_key)
+
 ret = []
 errors = []
 failed = []
 
 for channel_id, channel_title in [("UCIYNYv9ddZBg42gvyp8L2Iw", "팀브라더스"), ("UCIB_oNqi62rKnPFb3Toaozw", "코리안브로스"), ("UC270ueFEsQ21S26TYI_9yVA", "야신야덕")]:
-    print(channel_title)
-    
-    videos = yt.search(channel_id=channel_id, max_results=999999)
+    logger.info(f"Crawling videos from : {channel_title}")
+
+    videos = get_videos_from_channel(channel_id)
 
     for video in videos:
+        logger.info(f"Crawling comments from : {video['title']}")
         try:
             comments = search_comments(video["video_id"])
             cleaned_comments = get_comments_from_data(comments)
