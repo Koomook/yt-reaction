@@ -29,7 +29,6 @@ def get_videos_from_channel(channel_id: str, sleep: int = 1) -> List:
     continuations = [(ncd["continuation"], ncd["clickTrackingParams"])]
 
     while continuations:
-        print("continue")
         continuation, itct = continuations.pop()
         response = ajax_request(session, YOUTUBE_VIDEOS_AJAX_URL,
                                 params={"action_get_comments": 1,  # Delete
