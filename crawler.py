@@ -27,6 +27,8 @@ for channel_id, channel_title in [("UCIYNYv9ddZBg42gvyp8L2Iw", "팀브라더스"
                 "comments": comments,
                 "cleaned_comments": cleaned_comments,
             })
+        except KeyboardInterrupt:
+            raise KeyboardInterrupt
         except:
             errors.append(video)
 
