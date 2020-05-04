@@ -50,4 +50,4 @@ for video in errors:
 data = {"success": ret, "errors": errors, "failed": failed}
 
 with open("/tmp/yt.json", "w") as fp:
-    json.dump(data, fp)
+    json.dump(data, fp, ensure_ascii=False)
