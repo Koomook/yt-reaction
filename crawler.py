@@ -22,14 +22,13 @@ for channel_id, channel_title in [("UCIYNYv9ddZBg42gvyp8L2Iw", "팀브라더스"
             comments = search_comments(video["video_id"])
             cleaned_comments = get_comments_from_data(comments)
             video.update({
-                "video_publish_date": str(video["video_publish_date"]),
-                "collection_date": str(video["collection_date"]),
                 "comments": comments,
                 "cleaned_comments": cleaned_comments,
             })
         except KeyboardInterrupt:
             raise KeyboardInterrupt
-        except:
+        except Exception as e:
+            logger.error(e)
             errors.append(video)
 
     ret.append({"channel_title": channel_title, "videos": videos})
