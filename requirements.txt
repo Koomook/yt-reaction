@@ -3,5 +3,5 @@ git+https://github.com/koomook/youtube-comment-downloader@master
 beautifulsoup4==4.9.0
 colorlog==4.1.0
 cssselect==1.1.0
-lxml==4.5.0
+lxml==4.6.5
 requests==2.23.0
